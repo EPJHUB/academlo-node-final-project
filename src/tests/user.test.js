@@ -24,6 +24,18 @@ beforeAll(async () => {
   TOKEN = res.body.token;
 });
 
+//Get all
+test("GET -> 'USER_URL', should return status code 200, res.body to be defined res.body.length == 1", async () => {
+  const res = await request(app)
+    .get(USER_URL)
+    .set("Authorization", `Bearer ${TOKEN}`);
+
+  expect(res.statusCode).toBe(200);
+  expect(res.body).toBeDefined();
+  expect(res.body).toHaveLength(1);
+});
+
+//Create
 test("POST -> 'USER_URL', should return status code 201, res.body to be defined res.body.firstName === user.firstName", async () => {
   const res = await request(app)
     .post(USER_URL)
@@ -56,12 +68,12 @@ test("POST -> 'USER_URL/login', should return status code 200, res.body to be de
     }
     
     const res = await request(app)
-      .put(`${USER_URL}/login`)
+      .post(`${USER_URL}/login`)
       .send(userLogin)
   
     expect(res.statusCode).toBe(200);
     expect(res.body).toBeDefined();
-    expect(res.body.email).toBe(userLogin.email)
+    expect(res.body.user.email).toBe(userLogin.email)
     expect(res.body.token).toBeDefined()
   });
 
