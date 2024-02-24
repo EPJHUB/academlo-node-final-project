@@ -4,7 +4,8 @@ const sequelize = require('../utils/connection');
 const Product = sequelize.define('product', {
     title: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
     },
     description: {
         type: DataTypes.TEXT,
