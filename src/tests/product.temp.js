@@ -9,9 +9,9 @@ let category
 
 beforeAll(async () => {
     const user = {
-        email: "erick@gmail.com",
-        password: "erick1234"
-    }
+        email: "fernando@gmail.com",
+        password: "fernando1234",
+      };
 
     const res = await request(app)
         .post(URL_BASE_USER)
