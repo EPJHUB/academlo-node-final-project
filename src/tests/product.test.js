@@ -57,6 +57,8 @@ test("GET -> 'PRODUCTS_URL', should return status code 200, res.body to be defin
     expect(res.statusCode).toBe(200)
     expect(res.body).toBeDefined()
     expect(res.body).toHaveLength(1)
+    expect(res.body[0].category).toBeDefined()
+    expect(res.body[0].category.id).toBe(category.id)
 
 })
 
